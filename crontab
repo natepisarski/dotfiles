@@ -1,0 +1,1 @@
+0 0 * * * mv /home/nate/*.temp /home/nate/.archive
