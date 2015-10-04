@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#e.g 10_25_2015
+currentDate="date +%m_%d_%Y"
+
+# Tar the Essentials folder on my
+# external hard drive, putting it in my /home for a day.
+# This will eventually get copied into Systems/Current and
+# deleted.
+function tarEssentials(){
+    # Send Essentials to /home/ timestamped.
+    tar -pczf /home/Essentials_$(eval $currentDate).tar.gz /media/nate/NTFSboy/Backup/Essentials
+    mv Essentials* Essentials_$(eval $currentDate).tar.gz.forever
+}
+
+echo -n "Beginning backwards transfer... "
+tarEssentials
+echo "Done. "

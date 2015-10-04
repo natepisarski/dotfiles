@@ -1,0 +1,1 @@
+youtube-dl --extract-audio "$1" -o "/home/nate/Music/$2.mp3" --audio-format "mp3"

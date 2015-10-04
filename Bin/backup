@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Backup
+# The backup script will:
+#   * tar up the entire home directory
+#   * put the .tar.gz into my external hard drive (NTFSboy)
+#   * tar up NTFSboy's Essential folder, put it in Downloads/Backup
+
+#e.g 10_25_2015
+currentDate="date +%m_%d_%Y"
+
+# Tars the home directory, making a
+# /home/nate_{timestamp}.tar.gz package
+function tarHome(){
+
+    # Tar it up, make the tar
+    cd /home/
+    tar -pczf nate_$(eval $currentDate).tar.gz nate/
+}
+
+# Move the tar'd home directory to NTFSboy if mounted.
+function moveHomeToDrive(){
+    if [ ! -d "/media/nate/NTFSboy/" ]; then
+	echo "NTFSboy not mounted at /media/nate/NTFSboy. Quitting."
+	exit
+    fi
+    
+    # Remove all of the old backups in the Current backup
+    rm /media/nate/NTFSboy/Backup/Systems/Current/*.tar.gz
+
+    # Move all queued backups to the Current backup.
+    # If NTFSboy isn't mounted, the backup is kept waiting in
+    # /home. A maximum of one a day can be made without overwriting.
+    mv /home/*.tar.gz /media/nate/NTFSboy/Backup/Systems/Current/
+}
+
+echo -n "Beginning to tar home... "
+tarHome
+echo "Done."
+
+echo -n "Beginning transfer... "
+moveHomeToDrive
+echo "Done."
