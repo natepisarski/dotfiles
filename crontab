@@ -1,1 +1,8 @@
+# Sometimes I'll make a file ending in .temp. These go to archive daily.
 0 0 * * * mv /home/nate/*.temp /home/nate/.archive
+
+# Archive Screenshots every night
+0 0 * *	  * mv /home/nate/Pictures/Screenshot* /home/nate/Pictures/Screenshots
+
+# Create a backup every week
+0 0 * * 0 /home/nate/Bin/backup
