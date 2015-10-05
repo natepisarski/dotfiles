@@ -10,4 +10,4 @@ cargo build
 # Download new Rust source code
 cd /home/nate/Downloads/Packages/Rust/
 rm -rf rust
-git clone https://github.com/rust-lang/rust
+git clone --depth 1 https://github.com/rust-lang/rust

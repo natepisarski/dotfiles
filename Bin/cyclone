@@ -20,7 +20,7 @@ then
 
     if [ "$2" = "" ]
     then
-	echo "commit message: "
+	echo -n "commit message: "
 	read secondArg
 	echo ""
 	cyclone "$1" "$secondArg"
@@ -28,6 +28,7 @@ then
     
     git commit -m "$2"
     git push -u origin master
+    exit
 fi
 
 if [ "$1" = "commit" ]
@@ -36,15 +37,15 @@ then
     git add -u
     if [ "$2" = "" ]
     then
-	echo "commit message: "
+	echo -n "commit message: "
 	read secondArg
 	echo ""
 	cyclone "$1" "$secondArg"
     fi
        
     git commit -m "$2"
+    exit
 fi
 
-if ["$1" = "
 #Clone somebodies github repository
 git clone "https://www.github.com/$1/$2"
