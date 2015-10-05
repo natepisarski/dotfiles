@@ -24,6 +24,7 @@ then
 	read secondArg
 	echo ""
 	cyclone "$1" "$secondArg"
+	exit
     fi
     
     git commit -m "$2"
@@ -41,6 +42,7 @@ then
 	read secondArg
 	echo ""
 	cyclone "$1" "$secondArg"
+	exit
     fi
        
     git commit -m "$2"
