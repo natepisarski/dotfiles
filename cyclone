@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Simple github script. Give it an owner and a repository and it clones
+# it locally. Or give it "push" or "commit" and it makes a simple
+# push or commit. It can also reset.
+
+if [ "$1" = "" ]
+then
+    echo "Incorrect input format. Possible arguments: "
+    echo "cyclone push [commit message]"
+    echo "cyclone commit [commit message]"
+    echo "cyclone owner repository"
+    exit
+fi
+
+if [ "$1" = "push" ]
+then
+    git add --all
+    git add -u
+
+    if [ "$2" = "" ]
+    then
+	echo "commit message: "
+	read secondArg
+	echo ""
+	cyclone "$1" "$secondArg"
+    fi
+    
+    git commit -m "$2"
+    git push -u origin master
+fi
+
+if [ "$1" = "commit" ]
+then
+    git add --all
+    git add -u
+    if [ "$2" = "" ]
+    then
+	echo "commit message: "
+	read secondArg
+	echo ""
+	cyclone "$1" "$secondArg"
+    fi
+       
+    git commit -m "$2"
+fi
+
+if ["$1" = "
+#Clone somebodies github repository
+git clone "https://www.github.com/$1/$2"

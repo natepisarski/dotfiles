@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Build Racer #
+cd /home/nate/Downloads/Packages/Rust/
+rm -rf racer
+git clone https://github.com/phildawes/racer
+cd racer
+cargo build
+
+# Download new Rust source code
+cd /home/nate/Downloads/Packages/Rust/
+rm -rf rust
+git clone --depth 1 https://github.com/rust-lang/rust
