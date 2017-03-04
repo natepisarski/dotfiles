@@ -1,0 +1,37 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/nate/.config/" . "i3/")
+ ("/home/nate/.emacs.d/" . "configuration/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/nate/.config/i3/"
+ "/home/nate/.emacs.d/configuration/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "config"
+ "autostart.sh"
+ "theme.el"
+ "togglables.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/nate/.config/i3/" (22703 19502 95057 420000) "./" "autostart.sh" "config" "../")
+
+ ("/home/nate/" (22706 13402 132000 0) ".rustup/" ".gconf/" ".fehbg" ".dmrc" ".dbus/" ".vscode/" ".local/" "examples.desktop" ".cargo/" "Music/" "Videos/" ".thumbnails/" ".mozilla/" "Templates/" ".sudo_as_admin_successful" ".emacs" "./" "Desktop/" "Downloads/" ".pki/" ".profile" ".ICEauthority" ".bash_history" ".gnupg/" ".multirust/" ".Xauthority" "Pictures/" "Code/" ".xsession-errors.old" ".emacs.d/" ".config/" "Documents/" "Public/" ".emacs~" ".bash_logout" ".cache/" ".xsession-errors" ".bashrc" "../")
+
+ ("/home/nate/.config/" (22702 3427 857497 700000) "dconf/" "pulse/" "gnome-session/" "upstart/" "user-dirs.locale" "unity/" "gnome-control-center/" "gtk-3.0/" "./" "libfm/" "i3/" "user-dirs.dirs" "Code/" "libaccounts-glib/" "eog/" "nautilus/" "compiz-1/" "gedit/" "pcmanfm/" "ibus/" "update-notifier/" "evolution/" "../")
+
+ ("/home/nate/.emacs.d/configuration/" (22701 63152 330834 473000) "global-hooks.el" "BASE.el" "./" "additional-settings.el" "additional-modes.el" "autosave-configuration.el" "global-keybindings.el" "autosave-configuration.el~" "BASE.el~" "theme.el" "Assets/" "$HOME/" "../" "togglables.el" "packages.el")
+
+ ("/home/nate/.emacs.d/" (22701 63152 826841 120000) "ido.last" "configuration/" "./" "auto-save-list/" "elpa/" "saves/" "#!home!nate!file.c#" "../")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

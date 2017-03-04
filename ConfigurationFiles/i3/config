@@ -1,0 +1,190 @@
+### Global ###
+
+set $mod Mod4
+set $window_resize_step 1
+
+set $ws1 <span foreground="red">WEB</span>
+set $ws2 <span foreground="red">CODE</span>
+set $ws3 <span foreground="red">TERM</span>
+set $ws4 <span foreground="red">SOC</span>
+set $ws5 <span foreground="red">FIL</span>
+set $ws6 <span foreground="red">MUS</span>
+set $ws7 <span foreground="red">XT1</span>
+set $ws8 <span foreground="red">XT2</span>
+set $ws9 <span foreground="red">XT3</span>
+set $ws10 <span foreground="red">XT4</span>
+
+# Dmenu Settings
+set $dmenu_lines "-l 10"
+set $dmenu_prompt "-p $"
+set $dmenu_normal_background "-nb black"
+set $dmenu_normal_foreground "-nf orange"
+set $dmenu_selected_backgrond "-sb yellow"
+set $dmenu_selected_foreground "-sf black"
+set $dmenu_command "$dmenu_lines $dmenu_prompt $dmenu_normal_background $dmenu_normal_foreground $dmenu_selected_background $dmenu_selected_foreground"
+
+# Button held to drag window
+floating_modifier $mod
+
+# Font for title bars and bar if not set in bar block
+font pango:DejaVu Sans Mono 10
+
+### Keybindings ###
+
+# Execute a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# Program launching
+bindsym $mod+d exec "dmenu_run -l 10 -p $ -nb black -nf orange -sb yellow -sf black"
+
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# Focus Changing
+bindsym $mod+j focus left
+bindsym $mod+braceleft focus left
+
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+
+bindsym $mod+semicolon focus right
+bindsym $mod+braceright focus right
+
+# Focus changing - Arrow keys
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Window Moving
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+braceleft move left
+
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+braceright move right
+
+# Window Moving - Arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+### Window Management ###
+
+# Horizontal Split
+bindsym $mod+h split h
+
+# Vertical Split
+bindsym $mod+v split v
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Containers
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Window Floating
+bindsym $mod+Shift+space floating toggle
+
+# Focus changing across window modes
+bindsym $mod+space focus mode_toggle
+
+# Focus Parent
+bindsym $mod+a focus parent
+
+#bindsym $mod+d focus child
+
+### Workspaces ###
+
+# Move back and forth
+
+# Move to a specific workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+10 workspace $ws10
+
+# Move container to a workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+### i3 System Level Commands ###
+
+# Reload Config
+bindsym $mod+Shift+c reload
+
+# Restart
+bindsym $mod+Shift+r restart
+
+# Exit
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+### Window Resizing ###
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width $window_resize_step px or $window_resize_step ppt
+        bindsym k resize grow height $window_resize_step px or $window_resize_step ppt
+        bindsym l resize shrink height $window_resize_step px or $window_resize_step ppt
+        bindsym semicolon resize grow width $window_resize_step px or $window_resize_step ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width $window_resize_step px or $window_resize_step ppt
+        bindsym Down resize grow height $window_resize_step px or $window_resize_step ppt
+        bindsym Up resize shrink height $window_resize_step px or $window_resize_step ppt
+        bindsym Right resize grow width $window_resize_step px or $window_resize_step ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Handle startup programs and hooks
+exec_always $HOME/.config/i3/autostart.sh
+
+# Bar
+bar {
+        status_command i3status
+        tray_output primary
+
+	colors {
+	background #000000
+        statusline #ffffff
+        separator #666666
+
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
+	}
+}
+
